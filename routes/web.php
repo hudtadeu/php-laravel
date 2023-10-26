@@ -29,9 +29,13 @@ Route::get('/produto/{id}/{cat?}', function($id, $cat = '') {
     return "O id do produto é:".$id."<br>"."A categoria é:".$cat;
 });
 
-Route::get('/sobre', function() {
-    return redirect('empresa');
-});
-
 Route::redirect('/sobre', '/empresa');
 Route::view('/empresa', 'site/empresa');
+
+Route::get('/news', function() {
+    return view('site/news');
+})->name('noticias');
+
+Route::get('/novidades', function() {
+    return redirect()->route('noticias');
+});
