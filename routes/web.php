@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
+/*Route::get('/', function() {
     return view('welcome');
 });
 
@@ -38,4 +38,27 @@ Route::get('/news', function() {
 
 Route::get('/novidades', function() {
     return redirect()->route('noticias');
+});*/
+
+Route::get('/', function() {
+    return redirect()->route('admin.clientes');
+});
+
+/*Route::name('admin.')->group(function()*/
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.'
+], function() {
+
+    Route::get('dashboard', function() {
+        return "dashboard";
+    })->name('dashboard');
+
+    Route::get('sers', function() {
+        return "users";
+    })->name('users');
+
+    Route::get('clientes', function() {
+        return "clientes";
+    })->name('clientes');
 });
