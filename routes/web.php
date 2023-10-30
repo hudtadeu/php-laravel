@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdutoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,14 +39,14 @@ Route::get('/news', function() {
 
 Route::get('/novidades', function() {
     return redirect()->route('noticias');
-});*/
+});
 
 Route::get('/', function() {
     return redirect()->route('admin.clientes');
 });
 
-/*Route::name('admin.')->group(function()*/
-Route::group([
+Route::name('admin.')->group(function()
+    Route::group([
     'prefix' => 'admin',
     'as' => 'admin.'
 ], function() {
@@ -61,4 +62,6 @@ Route::group([
     Route::get('clientes', function() {
         return "clientes";
     })->name('clientes');
-});
+});*/
+
+Route::get('/', [ProdutoController::class, 'index'] );
